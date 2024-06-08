@@ -26,9 +26,6 @@
                         </select>
 
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
-                        <button type="submit" name="export" value="true" class="btn btn-info">
-                            <i class="fa fa-save"></i> Export
-                        </button>
                         <a href="{{ route('admin.product.create') }}" class="btn btn-primary">Thêm mới <i class="fa fa-plus"></i></a>
                     </form>
                 </div>
@@ -51,7 +48,7 @@
                             </tbody>
                             @if (isset($products))
                                     @foreach($products as $key => $product)
-                                        <>
+                                        <tr>
                                             <td>{{ (($products->currentPage() - 1) * $products->perPage()) + ( $key + 1)  }}</td>
                                             <td>{{ $product->pro_name }}</td>
                                             <td>
@@ -93,6 +90,7 @@
                                             <td>
                                                 <a href="{{ route('admin.product.update', $product->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
                                                 <a href="{{ route('admin.product.delete', $product->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                               
                                             </td>
                                         </tr>
                                     @endforeach

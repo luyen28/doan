@@ -26,11 +26,26 @@ class ProductController extends FrontendController
         if ($country = $request->country) $products->where('pro_country',$country);
 
         if ($request->price) {
-            $price =  $request->price;
-            if ($price == 6) {
-                $products->where('pro_price','>', 1000000);
-            }else{
-                $products->where('pro_price','<=', 200000 * $price);
+            $price = $request->price;
+            switch ($price) {
+                case 1:
+                    $products->where('pro_price', '<', 5000000);
+                    break;
+                case 2:
+                    $products->whereBetween('pro_price', [5000000, 10000000]);
+                    break;
+                case 3:
+                    $products->whereBetween('pro_price', [10000000, 15000000]);
+                    break;
+                case 4:
+                    $products->whereBetween('pro_price', [15000000, 20000000]);
+                    break;
+                case 5:
+                    $products->whereBetween('pro_price', [20000000, 30000000]);
+                    break;
+                case 6:
+                    $products->where('pro_price', '>', 30000000);
+                    break;
             }
         }
 

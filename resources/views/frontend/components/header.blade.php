@@ -52,7 +52,6 @@
                 <span class="menu js-menu-cate"><i class="fa fa-list-ul"></i> </span>
             </div>
             <div class="search">
-
                 <form action="{{ $link_search ?? route('get.product.list', ['k' => Request::get('k')]) }}" role="search"
                     method="GET">
                     <input type="text" name="k" value="{{ Request::get('k') }}" class="form-control"

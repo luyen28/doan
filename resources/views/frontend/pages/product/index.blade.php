@@ -1,4 +1,5 @@
 @extends('layouts.app_master_frontend')
+
 @section('css')
     <style>
 		<?php $style = file_get_contents('css/product_insights.min.css');echo $style;?>
@@ -7,6 +8,7 @@
         }
     </style>
 @stop
+
 @section('content')
     <div class="container">
         <div class="product-list">
@@ -14,19 +16,31 @@
                 @include('frontend.pages.product.include._inc_sidebar')
             </div>
             <div class="right">
-                <div class="breadcrumb">
-                    <ul>
-                        <li >
-                            <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
-                        </li>
-                    </ul>
-                </div>
                 <div class="filter-tab">
                     <ul>
                         @for($i = 1; $i <= 6; $i++)
                             <li class="{{ Request::get('price') == $i ? "active" : "" }}">
                                 <a href="{{ request()->fullUrlWithQuery(['price' =>  $i]) }}">
-                                    {{  $i == 6 ? "Lớn hơn 30 Triệu " : "Giá " . number_format($i * 5000000,0,',','.')  ." vnđ" }}
+                                @switch($i)
+                                    @case(1)
+                                        Dưới 5 triệu vnđ
+                                    @break
+                                    @case(2)
+                                        5 triệu - 10 triệu vnđ
+                                    @break
+                                    @case(3)
+                                        10 triệu - 15 triệu vnđ
+                                    @break
+                                    @case(4)
+                                        15 triệu - 20 triệu vnđ
+                                    @break
+                                    @case(5)
+                                        20 triệu - 30 triệu vnđ
+                                    @break
+                                    @case(6)
+                                        Trên 30 triệu vnđ
+                                    @break
+                                @endswitch  
                                 </a>
                             </li>
                         @endfor
@@ -34,13 +48,15 @@
                 </div>
                 {{-- {{  dd($products) }} --}}
                 <div class="order-tab">
-                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm Tính năng</span>
+                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm</span>
                     <div class="sort">
                         <div class="item">
                             <span class="title js-show-sort">Sắp xếp <i class="fa fa-caret-down"></i></span>
                             <ul>
                                 <li><a class="{{ Request::get('sort') == 'desc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'desc']) }}">Mới nhất</a></li>
                                 <li><a class="{{ Request::get('sort') == 'asc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'asc']) }}">Cũ nhất</a></li>
+                                <!-- <li><a class="{{ Request::get('sort') == 'price'? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'price']) }}">Giá tăng dần</a></li>
+                                <li><a class="{{ Request::get('sort') == 'price_desc'? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'price_desc']) }}">Giá giảm dần</a></li> -->
                             </ul>
                         </div>
                     </div>

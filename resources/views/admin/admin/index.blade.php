@@ -50,7 +50,9 @@
                                             <!-- <td>{{  $admin->created_at }}</td> -->
                                             <td>
                                                 <a href="{{ route('admin.account_admin.update', $admin->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="{{  route('admin.account_admin.delete', $admin->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                @if ($admin->level == 2)
+                                                    <a href="{{ route('admin.account_admin.delete', $admin->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

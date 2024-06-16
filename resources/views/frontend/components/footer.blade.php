@@ -26,7 +26,7 @@
                             @foreach($menus as $menu)
                                 <li>
                                     <a title="{{ $menu->mn_name }}"
-                                        href="{{ route('get.article.by_menu',$menu->mn_slug.'-'.$menu->id) }}">
+                                        href="{{ route('get.article.by_menu',$menu->mn_slug.'-'.$menu->id) }}">1
                                         {{ $menu->mn_name }}
                                     </a>
                                 </li>
@@ -48,7 +48,7 @@
                         <ul>
                             @foreach($categoriesHot as $item)
                                 <li>
-                                    <a href="{{  route('get.category.list', $item->c_slug.'-'.$item->id) }}" title="{{ $item->c_name }}">{{ $item->c_name }}</a>
+                                    <a href="{{ route('get.category.list', $item->c_slug.'-'.$item->id) }}" title="{{ $item->c_name }}">{{ $item->c_name }}</a>
                                 </li>
                             @endforeach
                         </ul>

@@ -49,13 +49,22 @@ class AdminStatisticalController extends Controller
 		$totalMoneyMonth = Transaction::whereMonth('created_at',date('m'))
 			->where('tst_status',Transaction::STATUS_SUCCESS)
 			->sum('tst_total_money');
-
+        
 		// doanh thu nam
 		$totalMoneyYear = Transaction::whereYear('created_at',date('Y'))
 			->where('tst_status',Transaction::STATUS_SUCCESS)
 			->sum('tst_total_money');
 
-
+        $monthlyRevenue = Transaction::whereYear('created_at', date('Y'))
+            ->where('tst_status', Transaction::STATUS_SUCCESS)
+            ->select(\DB::raw('sum(tst_total_money) as totalMoney'), \DB::raw('MONTH(created_at) as month'))
+            ->groupBy('month')
+            ->get()
+            ->toArray();
+        $revenuePerMonth = array_fill(1, 12, 0);
+        foreach ($monthlyRevenue as $revenue) {
+            $revenuePerMonth[$revenue['month']] = $revenue['totalMoney'];
+        }
         // Top sản phẩm xem nhiều
         $topViewProducts = Product::orderByDesc('pro_view')
             ->limit(10)
@@ -139,7 +148,6 @@ class AdminStatisticalController extends Controller
         }
 
 
-
         $viewData = [
             'totalTransactions'          => $totalTransactions,
             'totalUsers'                 => $totalUsers,
@@ -147,6 +155,7 @@ class AdminStatisticalController extends Controller
 			'totalMoneyWeed'		     => $totalMoneyWeed,
 			'totalMoneyMonth'		     => $totalMoneyMonth,
 			'totalMoneyYear'		     => $totalMoneyYear,
+            'revenuePerMonth'            => json_encode($revenuePerMonth),
             'totalProducts'              => $totalProducts,
             'totalRatings'               => $totalRatings,
             'transactions'               => $transactions,

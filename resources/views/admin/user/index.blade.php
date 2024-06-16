@@ -37,7 +37,7 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.user.transaction', $user->id) }}" class="btn btn-xs btn-primary js-show-transaction"> Nợ cần thu</a>
+                                                <!--    <a href="{{ route('admin.user.transaction', $user->id) }}" class="btn btn-xs btn-primary js-show-transaction"> Nợ cần thu</a> -->
                                                 <a href="{{  route('admin.user.delete', $user->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
                                             </td>
                                         </tr>

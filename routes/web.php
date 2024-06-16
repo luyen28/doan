@@ -92,3 +92,4 @@ Route::group(['prefix' => 'test','namespace' => 'Test'], function(){
 include 'route_api.php';
 
 Route::get('/home', 'HomeController@index')->name('get.home');
+

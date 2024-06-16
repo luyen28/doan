@@ -29,12 +29,12 @@
         <a href="https://www.dangquangwatch.vn/lib/ckfinder/images/DSC_1342(1).JPG" class="example-image-link countimg3" data-lightbox="example-1"><img alt="Đăng Quang Watch được vinh danh trong Gala “Báo chí với doanh nhân, doanh nghiệp”" src="https://www.dangquangwatch.vn/lib/ckfinder/images/DSC_1342(1).JPG" style="height:355px; width:500px" data-lightbox="roadtrip"></a>
     </p>
 
-    <p style="text-align:center">Đăng Quang Watch cam kết sẽ tiếp tục là nhà cung cấp các sản phẩm chất lượng, uy tín với dịch vụ hỗ trợ tốt nhất để luôn là lựa chọn tin cậy nhất.</p>
+    <!-- <p style="text-align:center">Đăng Quang Watch cam kết sẽ tiếp tục là nhà cung cấp các sản phẩm chất lượng, uy tín với dịch vụ hỗ trợ tốt nhất để luôn là lựa chọn tin cậy nhất.</p> -->
 
-    <p>Tham khảo các sản phẩm và hệ thống phân phối của Đăng Quang Watch tại :
+    <!-- <p>Tham khảo các sản phẩm và hệ thống phân phối của Đăng Quang Watch tại :
         <a href="http://www.dangquangwatch.vn">www.dangquangwatch.vn</a></p>
 
-    <p>&nbsp;</p>
+    <p>&nbsp;</p> -->
 
 </div>
 <div class="cb"></div>

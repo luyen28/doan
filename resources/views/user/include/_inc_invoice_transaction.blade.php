@@ -4,8 +4,8 @@
             <img style="background: #2196f3 !important;width: 217px;" src="{{  asset('images/logo.png') }}" alt="Web ban sách">
         </a>
         <div style="text-align: right;width: 50%">
-            <p style="margin: 0"><b>SachOnline.VN</b></p>
-            <p style="margin: 0">Mã số thuế ..................</p>
+            <!-- <p style="margin: 0"><b>SachOnline.VN</b></p> -->
+            <!-- <p style="margin: 0">Mã số thuế ..................</p> -->
             <p style="margin: 0">Địa chỉ <b>Hà Nội </b> STK ............</p>
             <p style="margin: 0">Điện thoại <b>{{ $transaction->tst_phone }}</b></p>
         </div>

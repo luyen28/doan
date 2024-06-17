@@ -17,11 +17,11 @@
                         <span class="info-box-text">Tổng số đơn hàng</span>
                         <span class="info-box-number">{{  $totalTransactions }}<small><a href="{{  route('admin.transaction.index') }}">(Chi tiết)</a></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
-            
+            <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
@@ -29,11 +29,11 @@
                         <span class="info-box-text">Thành viên</span>
                         <span class="info-box-number">{{ $totalUsers }} <small><a href="{{ route('admin.user.index') }}">(Chi tiết)</a></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
-            
+            <!-- /.col -->
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -43,11 +43,11 @@
                         <span class="info-box-text">Sản phẩm</span>
                         <span class="info-box-number">{{  $totalProducts }} <small><a href="{{ route('admin.product.index') }}">(Chi tiết)</a></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
-            
+            <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fa fa-google-plus"></i></span>
@@ -55,14 +55,14 @@
                         <span class="info-box-text">Đánh giá</span>
                         <span class="info-box-number">{{ $totalRatings }} <small><a href="{{ route('admin.rating.index') }}">(Chi tiết)</a></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
-            
+            <!-- /.col -->
         </div>
         <div class="row">
-			
+			<!-- /.col -->
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="info-box">
 					<span class="info-box-icon bg-yellow"><i class="fa fa-dollar"></i></span>
@@ -70,11 +70,11 @@
 						<span class="info-box-text">Doanh thu ngày</span>
 						<span class="info-box-number">{{ number_format($totalMoneyDay,0,',','.') }} <small></small></span>
 					</div>
-					
+					<!-- /.info-box-content -->
 				</div>
-				
+				<!-- /.info-box -->
 			</div>
-			
+			<!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fa fa-dollar"></i></span>
@@ -82,24 +82,23 @@
                         <span class="info-box-text">Doanh thu tuần</span>
                         <span class="info-box-number">{{ number_format($totalMoneyWeed ,0,',','.') }}<small></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
-            
+            <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fa fa-dollar"></i></span>
-                    <!-- <div>
-                        <label for="monthSelect">Chọn tháng:</label>
-                        <input type="month" id="monthSelect" name="month" class="form-control" onchange="fetchMonthlyRevenue()">
-                    </div> -->
                     <div class="info-box-content">
                         <span class="info-box-text">Doanh thu tháng</span>
-                        <span class="info-box-number" id="monthlyRevenue">{{number_format($totalMoneyMonth,0,',','.')  }}</span>
+                        <span class="info-box-number">{{number_format($totalMoneyMonth,0,',','.')  }} <small></small></span>
                     </div>
-                </div>  
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
             </div>
+            <!-- /.col -->
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -109,9 +108,9 @@
                         <span class="info-box-text">Doanh thu năm</span>
                         <span class="info-box-number">{{ number_format($totalMoneyYear ,0,',','.') }} <small></small></span>
                     </div>
-                    
+                    <!-- /.info-box-content -->
                 </div>
-                
+                <!-- /.info-box -->
             </div>
 
         </div>
@@ -120,7 +119,7 @@
     <div class="row" style="margin-bottom: 15px;">
         <div class="col-sm-8">
             <figure class="highcharts-figure">
-                <div id="container2" data-list-day="{{ $listDay }}" data-money-default={{ $arrRevenueTransactionMonthDefault }} data-money={{ $arrRevenueTransactionMonth }}>
+                <div id="container2" data-list-day="{{ $listMonth }}" data-money-default={{ $arrRevenueTransactionYearDefault }} data-money={{ $arrRevenueTransactionYear }}>            
                 </div>
             </figure>
         </div>
@@ -130,6 +129,7 @@
             </figure>
         </div>
     </div>
+    
     <!-- Main row -->
     <div class="row">
         <!-- Left col -->
@@ -246,7 +246,7 @@
             </div>
             <!-- /.box -->
         </div>
-        
+        <!-- /.col -->
         <div class="col-md-4">
             <!-- PRODUCT LIST -->
             <div class="box box-primary">
@@ -321,7 +321,7 @@
             </div>
             <!-- /.box -->
         </div>
-        
+        <!-- /.col -->
     </div>
     <!-- /.row -->
 </section>
@@ -374,21 +374,32 @@
                 type: 'spline'
             },
             title: {
-                text: 'Biểu đồ doanh thu các ngày trong tháng'
+                text: 'Biểu đồ doanh thu các tháng trong năm'
             },
             // subtitle: {
             //     text: 'Source: WorldClimate.com'
             // },
             xAxis: {
-                categories: listday
+                title: {
+                    text: 'Tháng'
+                },
+                categories: listday,
+                labels: {
+                    style:{
+                        fontSize: '14px',
+                    }
+                }
             },
             yAxis: {
                 title: {
-                    text: 'Biển đồ giá trị'
+                    text: 'VNĐ'
                 },
                 labels: {
                     formatter: function () {
-                        return this.value + '°';
+                        return this.value;
+                    },
+                    style: {
+                        fontSize: '14px',
                     }
                 }
             },
@@ -425,15 +436,3 @@
         $("body .highcharts-credits").remove();
     </script>
 @stop
-@section('scripts')
-    <script>
-        function fetchMonthlyRevenue() {
-            const month = document.getElementById('monthSelect').value;
-            fetch(`/admin/monthly-revenue?month=${month}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('monthlyRevenue').innerText = data.revenue;
-                });
-            }
-    </script>
-@endsection

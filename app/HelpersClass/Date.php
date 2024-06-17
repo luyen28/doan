@@ -19,4 +19,17 @@ class Date
 
         return $arrayDay;
     }
+
+    public static function getListMonthInYear()
+    {
+        $arrayMonth = [];
+        $year       = date('Y');
+        // Lấy tất cả các tháng trong năm
+        for ($month = 1; $month <= 12; $month++) {
+            $time = mktime(12, 0, 0, $month, 1, $year);
+            $arrayMonth[] = date('Y-m', $time);
+        }
+
+        return $arrayMonth;
+    }
 }

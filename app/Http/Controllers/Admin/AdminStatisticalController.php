@@ -107,45 +107,50 @@ class AdminStatisticalController extends Controller
                 'Huỷ bỏ' , $transactionCancel, false
             ]
         ];
-
-        $listDay = Date::getListDayInMonth();
-
-        //Doanh thu theo tháng ứng với trạng thái đã xử lý
-        $revenueTransactionMonth = Transaction::where('tst_status',3)
-            ->whereMonth('created_at',date('m'))
-            ->select(\DB::raw('sum(tst_total_money) as totalMoney'), \DB::raw('DATE(created_at) day'))
-            ->groupBy('day')
+            // Lấy danh sách các tháng trong năm
+            $listMonth = Date::getListMonthInYear();
+       
+            // Doanh thu theo tháng ứng với trạng thái đã xử lý
+            $revenueTransactionYear = Transaction::where('tst_status', 3)
+            ->whereYear('created_at', date('Y'))
+            ->select(\DB::raw('sum(tst_total_money) as totalMoney'), \DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'))
+            ->groupBy('month')
             ->get()->toArray();
-
-        //Doanh thu theo tháng ứng với trạng thái tiếp nhận
-        $revenueTransactionMonthDefault = Transaction::where('tst_status',1)
-            ->whereMonth('created_at',date('m'))
-            ->select(\DB::raw('sum(tst_total_money) as totalMoney'), \DB::raw('DATE(created_at) day'))
-            ->groupBy('day')
-            ->get()->toArray();
-
-        $arrRevenueTransactionMonth = [];
-        $arrRevenueTransactionMonthDefault = [];
-        foreach($listDay as $day) {
-            $total = 0;
-            foreach ($revenueTransactionMonth as $key => $revenue) {
-                if ($revenue['day'] ==  $day) {
-                    $total = $revenue['totalMoney'];
-                    break;
+        
+    
+            // Doanh thu theo tháng ứng với trạng thái tiếp nhận
+            $revenueTransactionYearDefault = Transaction::where('tst_status', 1)
+                ->whereYear('created_at', date('Y'))
+                ->select(\DB::raw('sum(tst_total_money) as totalMoney'), \DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'))
+                ->groupBy('month')
+                ->get()->toArray();
+    
+            $arrRevenueTransactionYear = [];
+            $arrRevenueTransactionYearDefault = [];
+    
+            foreach ($listMonth as $month) {
+                $total = 0;
+                foreach ($revenueTransactionYear as $key => $revenue) {
+                    if ($revenue['month'] ==  $month) {
+                        $total = $revenue['totalMoney'];
+                        break;
+                    }
                 }
-            }
-
-            $arrRevenueTransactionMonth[] = (int)$total;
-
-            $total = 0;
-            foreach ($revenueTransactionMonthDefault as $key => $revenue) {
-                if ($revenue['day'] ==  $day) {
-                    $total = $revenue['totalMoney'];
-                    break;
+    
+                $arrRevenueTransactionYear[] = (int)$total;
+    
+                $total = 0;
+                foreach ($revenueTransactionYearDefault as $key => $revenue) {
+                    if ($revenue['month'] ==  $month) {
+                        $total = $revenue['totalMoney'];
+                        break;
+                    }
                 }
+                $arrRevenueTransactionYearDefault[] = (int)$total;
             }
-            $arrRevenueTransactionMonthDefault[] = (int)$total;
-        }
+    
+
+
 
 
         $viewData = [
@@ -163,9 +168,9 @@ class AdminStatisticalController extends Controller
             'topPayProducts'             => $topPayProducts,
 			'topProductBuyMonth'		 => $topProductBuyMonth,
             'statusTransaction'          => json_encode($statusTransaction),
-            'listDay'                    => json_encode($listDay),
-            'arrRevenueTransactionMonth' => json_encode($arrRevenueTransactionMonth),
-            'arrRevenueTransactionMonthDefault' => json_encode($arrRevenueTransactionMonthDefault)
+            'listMonth'                  =>json_encode($listMonth),
+            'arrRevenueTransactionYear'   =>json_encode($arrRevenueTransactionYear),
+            'arrRevenueTransactionYearDefault' =>json_encode($arrRevenueTransactionYearDefault)
         ];
 
         return view('admin.statistical.index', $viewData);

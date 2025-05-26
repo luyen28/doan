@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{  route('admin.menu.index') }}"> Menu</a></li>
-            <li class="active"> Create</a></li>
+            <li><a class="active"> Create </a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            
+
                         </div>
                         <div class="col-sm-12">
                             <div class="box-footer text-center">
@@ -36,7 +36,7 @@
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-                    </form>  
+                    </form>
                 </div>
             </div>
             <!-- /.box -->

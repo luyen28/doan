@@ -37,9 +37,4 @@
             <p>Mời bạn <a href="{{ route('get.user.update_info') }}">click vào đây</a> để cập nhật thông tin cá nhân</p>
         </div>
     </div>
-    <div style="background: #f4f5f5;box-sizing: border-box;padding: 15px">
-        <p style="margin:2px 0;color: #333">Email : phupt.humg.94@gmail.com</p>
-        <p style="margin:2px 0;color: #333">Phone : 0986420994</p>
-        <p style="margin:2px 0;color: #333">Face : <a href="https://www.facebook.com/TrungPhuNA">TrungPhuNa</a></p>
-    </div>
 </div>

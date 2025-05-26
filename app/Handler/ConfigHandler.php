@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Handler\ConfigHandler
+namespace App\Handler\ConfigHandler;
 /**
  * 
  */

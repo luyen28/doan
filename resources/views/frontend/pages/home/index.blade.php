@@ -3,7 +3,7 @@
 @section('css')
     @php
         $display_menu = config('layouts.component.cate.home.display');
-//    @endphp
+    @endphp
     <style>
         <?php $style = file_get_contents('css/home_insights.min.css');echo $style;?>
         #menu-main {
@@ -13,7 +13,6 @@
 @stop
 
 @section('content')
-
     <div class="component-slide">
         @if (config('layouts.pages.home.slide.with') == 'full')
             <div id="content-slide">
@@ -28,7 +27,6 @@
         @else
             <div class="container" style="display: flex">
                 <div class="left" style="width: 250px">
-
                 </div>
                 <div class="right" style=" width: calc(100% - 250px);">
                     <div id="content-slide">
@@ -45,28 +43,11 @@
         @endif
     </div>
     <div class="container" id="before-slide">
-        {{-- <div class="logo-partner">
-            @for($i = 0; $i < 6; $i++)
-                <div class="item">
-                    <a href="#" title="Đồng hồ Atlantic Swiss">
-                        <img class="lazyload" src="https://www.dangquangwatch.vn/view/Pic/Jacques.jpg" data-src="" alt="Atlantic Swiss" />
-                    </a>
-                </div>
-            @endfor
-        </div> --}}
         <div class="product-one">
             <div class="top">
-                <a href="#" title="" class="main-title">SẢN PHẨM BÁN CHẠY</a>
-                {{-- <ul class="top__tab">
-                    <li data-id="proNewst1" class="active"><a href="javascript://" title="">Tất cả</a></li>
-                    <li data-id="proNewst2"><a href="javascript://" title=""><h2>Đồng hồ nam</h2></a></li>
-                    <li data-id="proNewst3"><a href="javascript://" title=""><h2>Đồng hồ nữ</h2></a></li>
-                </ul> --}}
+                <a href="#" title="" class="main-title">Sản Phẩm Bán Chạy</a> 
             </div>
             <div class="bot">
-{{--                @for($i = 1 ; $i <= 5; $i ++)--}}
-{{--                    <div></div>--}}
-{{--                @endfor--}}
                 @if ($event1)
                 <div class="left">
                     <div class="image">
@@ -85,23 +66,9 @@
                 </div>
             </div>
         </div>
-
         @if ($event2)
             @include('frontend.pages.home.include._inc_flash_sale')
         @endif
-
-        {{-- <div class="product-two">
-            <div class="top">
-            </div>
-            <div class="bot">
-                @for($i=0; $i < 4; $i++)
-                    <div class="item">
-                        @include('frontend.components.product_item')
-                    </div>
-                @endfor
-            </div>
-        </div> --}}
-
         <div class="product-three">
             <div class="top">
                 <a href="#" title="" class="main-title">SẢN PHẨM MỚI</a>

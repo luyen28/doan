@@ -25,9 +25,9 @@
                 </div>
             </div>
             <div class="right">
-                {{-- @include('frontend.components.articles_hot_sidebar_top',['articles' => $articlesHotSidebarTop])
+                @include('frontend.components.articles_hot_sidebar_top',['articles' => $articlesHotSidebarTop])
                 @include('frontend.components.top_product',['products' => $productTopPay])
-                @include('frontend.components.hot_article',['articles'  => $articlesHot]) --}}
+                @include('frontend.components.hot_article',['articles'  => $articlesHot])
             </div>
         </div>
     </div>

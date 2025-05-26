@@ -1,10 +1,10 @@
-<section class="top-header desktop" style="background: {{ config('layouts.component.header-top.background') }} ">
+<!-- <section class="top-header desktop" style="background: {{ config('layouts.component.header-top.background') }} ">
     <div class="container">
         <div class="content">
             <div class="left">
-                <!-- <a href="{{ route('get.static.customer_care') }}" title="Chăm sóc khách hàng" rel="nofollow">Chăm
+                <a href="{{ route('get.static.customer_care') }}" title="Chăm sóc khách hàng" rel="nofollow">Chăm
                     sóc khách hàng</a>
-                <a href="{{ route('get.user.transaction') }}" title="Kiểm tra đơn hàng" rel="nofollow">Kiểm tra đơn hàng</a> -->
+                <a href="{{ route('get.user.transaction') }}" title="Kiểm tra đơn hàng" rel="nofollow">Kiểm tra đơn hàng</a>
             </div>
             <div class="right">
                 @if (Auth::check())
@@ -12,8 +12,8 @@
                     <a href="{{  route('get.user.dashboard') }}">Quản lý tài khoản</a>
                     <a href="{{  route('get.logout') }}">Đăng xuất </a>
                 @else
-                    <!-- <a href="{{  route('get.register') }}">Đăng ký</a>
-                    <a href="{{  route('get.login') }}">Đăng nhập</a> -->
+                    <a href="{{  route('get.register') }}">Đăng ký</a>
+                    <a href="{{  route('get.login') }}">Đăng nhập</a>
                 @endif
             </div>
         </div>
@@ -24,23 +24,35 @@
     <div class="container">
         <div class="content">
             <div class="left">
-                {{-- <a href="{{ route('get.static.customer_care') }}" title="Chăm sóc khách hàng" rel="nofollow">Chăm
-                    sóc khách hàng</a>--}}
-                <!-- <a href="{{ route('get.user.transaction') }}" title="Kiểm tra đơn hàng" rel="nofollow">Kiểm tra đơn
-                    hàng</a> -->
+                 <a href="{{ route('get.static.customer_care') }}" title="Chăm sóc khách hàng" rel="nofollow">Chăm
+                    sóc khách hàng</a>
+                <a href="{{ route('get.user.transaction') }}" title="Kiểm tra đơn hàng" rel="nofollow">Kiểm tra đơn
+                    hàng</a>
                 @if (Auth::check())
                     <a href="">Xin chào {{ Auth::user()->name }}</a>
                     <a href="{{  route('get.user.dashboard') }}">Quản lý tài khoản</a>
                     <a href="{{  route('get.logout') }}">Đăng xuất </a>
                 @else
-                    <!-- <a href="{{  route('get.register') }}">Đăng ký</a>
-                    <a href="{{  route('get.login') }}">Đăng nhập</a> -->
+                    <a href="{{  route('get.register') }}">Đăng ký</a>
+                    <a href="{{  route('get.login') }}">Đăng nhập</a>
                 @endif
             </div>
         </div>
     </div>
-</section>
-
+</section> -->
+<style>
+    .rounded-cart{
+        border-radius: 20px;
+        padding : 10px;
+        border: 1px soid #ccc;
+        background-color: #f8f9fa;
+        display: inline-block;
+        /* text-shadow: 1px 1px 2px rgba(0,0,0,0.3); */
+        font-weight: bold;
+        color: black;
+        font-style: normal;
+    }
+</style>
 <div class="commonTop">
     <div id="headers" style="background: {{ config('layouts.component.menu.background') }} ">
         <div class="container header-wrapper">
@@ -49,7 +61,7 @@
                 <a href="/" class="desktop">
                     <img src="{{ url('images/logo.png') }}" style="height: 35px;" alt="Home">
                 </a>
-                <span class="menu js-menu-cate"><i class="fa fa-list-ul"></i> </span>
+                <span class="menu js-menu-cate"><i class="fa fa-list-ul"></i></span>
             </div>
             <div class="search">
                 <form action="{{ $link_search ?? route('get.product.list', ['k' => Request::get('k')]) }}" role="search"
@@ -64,13 +76,21 @@
             </div>
             <ul class="right">
                 <li>
-                    <a href="{{ route('get.shopping.list') }}" title="Giỏ hàng">
-                        <i class="la la-shopping-cart"></i>
-                        <span class="text">
-                            <span class="">Giỏ hàng ({{ \Cart::count() }})</span>
-                            <span></span>
-                        </span>
-                    </a>
+                    @if(auth()->check())
+                        <a href="{{ route('get.shopping.list') }}" title="Giỏ hàng">
+                            <!-- <i class="la la-shopping-cart"></i> -->     
+                            <span class="text rounded-cart la la-shopping-cart" >
+                                Giỏ hàng 
+                            </span>
+                        </a>
+                    @else
+                        <a href="{{ route('get.login') }}" title="Đăng nhập">
+                            <!-- <i class="la la-user"></i> -->
+                            <span class="text rounded-cart la la-shopping-cart">
+                                Giỏ hàng
+                            </span>
+                        </a>
+                    @endif
                 </li>
                 <li class="desktop">
                     <a href="tel:18006005" title="" class="info-user js-show-dropdown">
@@ -79,18 +99,19 @@
                     </a>
                     <ul class="header-menu-user">
                         @if(auth()->check())
-                            <!-- Hiển thị quản lý thông tin người dùng khi đã đăng nhập -->
                             @foreach(config('user') as $item)
                                 <li>
                                     <a href="{{ route($item['route']) }}"
                                         class="{{ \Request::route()->getName() == $item['route'] ? 'active' : '' }}">
-                                        <i class="{{ $item['icon'] }}"></i>
+                                        <!-- <i class="{{ $item['icon'] }}"></i> -->
                                         <span>{{ $item['name'] }}</span>
                                     </a>
                                 </li>
                             @endforeach
+                            <li>
+                                <a href="{{  route('get.logout') }}">Đăng xuất </a>
+                            </li>
                         @else
-                            <!-- Hiển thị nút đăng ký / đăng nhập khi chưa đăng nhập -->
                             <li>
                                 <a href="{{ route('get.login') }}">Đăng nhập</a>
                             </li>
@@ -100,7 +121,6 @@
                         @endif
                     </ul>
                 </li>
-
             </ul>
 
             <div id="menu-main" class="container" style="display: none">

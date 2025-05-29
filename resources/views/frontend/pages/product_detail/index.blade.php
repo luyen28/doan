@@ -99,7 +99,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            @include('frontend.pages.product_detail.include._inc_keyword')
+{{--                            @include('frontend.pages.product_detail.include._inc_keyword')--}}
                         </div>
                         @if (isset($event1))
                             <div class="ads">
@@ -116,9 +116,9 @@
                 <iframe src="{{ $product->pro_link }}" width="100%" height="1000"></iframe>
                 @endif
             </div> -->
-            
+
             @include('frontend.pages.product_detail.include._inc_information')
-            
+
             @include('frontend.pages.product_detail.include._inc_ratings')
             <div class="comments">
                 <div class="form-comment">
@@ -176,4 +176,4 @@
     </script>
     <script src="{{ asset('js/product_detail.js') }}" type="text/javascript"></script>
 
-@stop  
+@stop

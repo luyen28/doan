@@ -224,4 +224,15 @@ Route::group(['prefix' => 'api-admin', 'namespace' => 'Admin', 'middleware' => '
 
         Route::get('delete/{id}', 'DiscountCodeController@delete')->name('admin.discount.code.delete');
     });
+    Route::prefix('admin')->middleware(['auth'])->group(function () {
+        Route::get('/', [AdminAccountController::class, 'index'])->name('admin.index');
+
+        Route::middleware(['admin.level:1'])->group(function () {
+            Route::get('/create', [AdminAccountController::class, 'create'])->name('admin.create');
+            Route::post('/store', [AdminAccountController::class, 'store'])->name('admin.store');
+            Route::get('/edit/{id}', [AdminAccountController::class, 'edit'])->name('admin.edit');
+            Route::post('/update/{id}', [AdminAccountController::class, 'update'])->name('admin.update');
+            Route::get('/delete/{id}', [AdminAccountController::class, 'delete'])->name('admin.delete');
+        });
+    });
 });

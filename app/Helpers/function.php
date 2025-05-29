@@ -189,3 +189,10 @@ if (!function_exists('check_admin'))
 		return get_data_user('admins','level') == 1 ? true : false;
 	}
 }
+
+if (!function_exists('check_admin_level')) {
+    function check_admin_level($level = 1)
+    {
+        return get_data_user('admins', 'level') <= $level;
+    }
+}

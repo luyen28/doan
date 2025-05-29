@@ -19,15 +19,15 @@
         @if ($product->pro_sale)
             <p>
                 <span class="percent">-{{ $product->pro_sale }}%</span>
-                @php 
+                @php
                     $price = ((100 - $product->pro_sale) * $product->pro_price)  /  100 ;
                 @endphp
                 <span class="price">{{  number_format($price,0,',','.') }} đ</span>
                 <span class="price-sale">{{ number_format($product->pro_price,0,',','.') }} đ</span>
             </p>
-        @else 
+        @else
             <p class="price">{{  number_format($product->pro_price,0,',','.') }} đ</p>
         @endif
-        
+
     </div>
 @endif

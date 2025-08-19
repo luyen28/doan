@@ -16,17 +16,18 @@ class AdminInventoryController extends Controller
 	 * Nhập kho
 	 */
     public function getWarehousing()
-	{
-        $warehouses =  Warehouse::orderByDesc('id')
-        ->paginate(10);
+    {
+        $warehouses = Warehouse::with('product')
+            ->orderByDesc('id')
+            ->paginate(10);
 
+        $viewData = [
+            'warehouses' => $warehouses,
+        ];
 
-		$viewData = [
-			'warehouses' => $warehouses,
-		];
+        return view('admin.inventory.import', $viewData);
+    }
 
-		return view('admin.inventory.import', $viewData);
-	}
 
 	public function add()
     {

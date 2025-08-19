@@ -36,8 +36,8 @@ class AdminProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $attributeOld = [];   
-        $keywordOld   = [];   
+        $attributeOld = [];
+        $keywordOld   = [];
 
         $attributes =  $this->syncAttributeGroup();
         $keywords   = Keyword::all();
@@ -56,10 +56,10 @@ class AdminProductController extends Controller
 		{
 			$data['pro_sale'] = $request->pro_sale;
 		}
-        
+
         if ($request->pro_avatar) {
             $image = upload_image('pro_avatar');
-            if ($image['code'] == 1) 
+            if ($image['code'] == 1)
                 $data['pro_avatar'] = $image['name'];
         }
 
@@ -75,17 +75,17 @@ class AdminProductController extends Controller
             $this->syncKeyword($request->keywords, $id);
             if ($request->file) {
                 $this->syncAlbumImageAndProduct($request->file, $id);
-            }   
+            }
         }
 
         return redirect()->back();
     }
 
-    public function edit($id) 
+    public function edit($id)
     {
         $categories = Category::all();
         $product = Product::findOrFail($id);
-        $attributes =  $this->syncAttributeGroup(); 
+        $attributes =  $this->syncAttributeGroup();
         $keywords   = Keyword::all();
 		$supplier = Supplier::all();
 
@@ -133,7 +133,7 @@ class AdminProductController extends Controller
 
         if ($request->pro_avatar) {
             $image = upload_image('pro_avatar');
-            if ($image['code'] == 1) 
+            if ($image['code'] == 1)
                 $data['pro_avatar'] = $image['name'];
         }
 
@@ -146,14 +146,14 @@ class AdminProductController extends Controller
         $update = $product->update($data);
 
         if ($update) {
-            $this->syncAttribute($request->attribute, $id); 
+            $this->syncAttribute($request->attribute, $id);
             $this->syncKeyword($request->keywords, $id);
 
             if ($request->file) {
                 $this->syncAlbumImageAndProduct($request->file, $id);
-            }   
+            }
         }
-        
+
         return redirect()->back();
     }
 
@@ -246,7 +246,7 @@ class AdminProductController extends Controller
                 \DB::table('products_attributes')->where('pa_product_id', $idProduct)->delete();
                 \DB::table('products_attributes')->insert($datas);
             }
-        }   
+        }
     }
 
 
@@ -254,7 +254,7 @@ class AdminProductController extends Controller
     {
         $attributes     = Attribute::get();
         $groupAttribute = [];
-        
+
         foreach ($attributes as $key => $attribute) {
             $key = $attribute->gettype($attribute->atb_type)['name'];
             $groupAttribute[$key][] = $attribute->toArray();

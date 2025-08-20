@@ -24,18 +24,18 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th style="width: 25%">Name</th>
-                                    <th>Category</th>
-                                    <th>Avatar</th>
-                                    <th>Hot</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th style="width: 25%">Tên</th>
+                                    <th>Loại tin tức</th>
+                                    <th>Ảnh</th>
+{{--                                    <th>Hot</th>--}}
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian</th>
+                                    
                                 </tr>
 
                             </tbody>
                             @if (isset($articles))
-                            
+
                                     @foreach($articles as $key => $article)
                                         <tr>
                                             <td>{{ (($articles->currentPage() - 1) * $articles->perPage()) + ( $key + 1)  }}</td>
@@ -48,13 +48,13 @@
                                                 <img src="{{ pare_url_file($article->a_avatar) }}" style="width: 80px;height: 80px">
                                             </td>
 
-                                            <td>
-                                                @if ($article->a_hot == 1)
-                                                    <a href="{{ route('admin.article.hot', $article->id) }}" class="label label-info">Nổi bật</a>
-                                                @else
-                                                    <a href="{{ route('admin.article.hot', $article->id) }}" class="label label-default">Không</a>
-                                                @endif
-                                            </td>
+{{--                                            <td>--}}
+{{--                                                @if ($article->a_hot == 1)--}}
+{{--                                                    <a href="{{ route('admin.article.hot', $article->id) }}" class="label label-info">Nổi bật</a>--}}
+{{--                                                @else--}}
+{{--                                                    <a href="{{ route('admin.article.hot', $article->id) }}" class="label label-default">Không</a>--}}
+{{--                                                @endif--}}
+{{--                                            </td>--}}
                                             <td>
                                                 @if ($article->a_active == 1)
                                                     <a href="{{ route('admin.article.active', $article->id) }}" class="label label-info">Hiển thị</a>

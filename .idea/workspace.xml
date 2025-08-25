@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="936d9819-8835-4da1-be61-7f114f0ccbbb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminAccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminAccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminArticleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/article/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/article/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/article/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/article/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +189,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -227,6 +230,10 @@
       <workItem from="1755660338258" duration="1403000" />
       <workItem from="1755662318421" duration="233000" />
       <workItem from="1755662898386" duration="1215000" />
+      <workItem from="1755739230657" duration="1160000" />
+      <workItem from="1755740824582" duration="122000" />
+      <workItem from="1755763717353" duration="2772000" />
+      <workItem from="1756095207321" duration="348000" />
     </task>
     <servers />
   </component>
